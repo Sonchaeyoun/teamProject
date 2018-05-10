@@ -1,0 +1,11 @@
+<p>
+    <strong>Name:</strong>
+    <%= @gallery.name %>
+</p>
+
+<p>
+    <strong>Image:</strong>
+    <%= image_tag(@gallery.attachment.url) %>
+</p>
+
+<%= link_to 'Back', galleries_path %>

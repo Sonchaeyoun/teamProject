@@ -1,0 +1,36 @@
+<% if !flash[:notice].blank? %>
+   <div class = "alert alert-info">
+      <%= flash[:notice] %>
+   </div>
+<% end %>
+
+<br />
+<center><h1>Dongguk Gallery</h1></center>
+
+<%= link_to "New Picture", new_gallery_path, class: "btn btn-primary" %>
+<br />
+<br />
+
+<table class = "table table-bordered table-striped">
+   <thead>.
+      <tr>
+         <th>Name</th>
+         <th>Download Image</th>
+         <th> </th>
+      </tr>
+   </thead>
+   
+   <tbody>
+      <% @galleries.each do |gallery| %>
+         
+         <tr>
+            <td><%= gallery.name %></td>
+            <td><%= link_to "Show", gallery_path(gallery) %></td>
+            <td><%= link_to "Download Image", gallery.attachment_url %></td>
+            <td><%= button_to "Delete",  gallery, method: :delete, class: "btn btn-danger", confirm: "Are you sure that you wish to delete #{gallery.name}?" %></td>
+         </tr>
+         
+      <% end %>
+   </tbody>
+   
+</table>
