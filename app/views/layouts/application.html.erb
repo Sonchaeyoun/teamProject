@@ -1,8 +1,16 @@
 <!DOCTYPE html>
 <html>
+   <% if user_signed_in? %>
+   <li class="item"><%= current_user.name %></li>
+   <li class="item"><%= link_to '로그아웃',session_path(current_user), method:'delete'%></li>
+   <% else %>
+   <%= link_to '회원가입',new_user_path%>
+   <%= link_to '로그인',new_session_path%>
+   <% end %>
+   
    
    <head>
-      <title>teamPro2</title>
+      <title>DonggukGallery</title>
       <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
       <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
       <%= csrf_meta_tags %>
@@ -11,7 +19,8 @@
    <body>
       <div class = "container" style = "padding-top:20px;">
          <%= yield %>
+         <%= debug(params) if Rails.env.development? %>
       </div>
    </body>
-
+   
 </html>
